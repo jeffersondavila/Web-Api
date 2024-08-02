@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using webapi.Models;
 
 namespace webapi.Services;
@@ -13,7 +14,7 @@ public class TareaService : ITareaService
 
     public IEnumerable<Tarea> GetTareas()
     {
-        return context.Tareas;
+        return context.Tareas.Include(p=> p.Categorias);
     }
 
     public async Task SaveTareas(Tarea tarea)
@@ -28,7 +29,7 @@ public class TareaService : ITareaService
 
         if(tareaActual != null)
         {
-            tareaActual.CategoriaId = tarea.CategoriaId;
+            tareaActual.CodigoCategoria = tarea.CodigoCategoria;
             tareaActual.Titulo = tarea.Titulo;
             tareaActual.Descripcion = tarea.Descripcion;
             tareaActual.PrioridadTarea = tarea.PrioridadTarea;

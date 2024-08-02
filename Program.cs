@@ -1,3 +1,4 @@
+using webapi;
 using webapi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,8 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// builder.Services.AddSqlServer<TareasContext>(builder.Configuration.GetConnectionString("connection"));
+builder.Services.AddSqlServer<TareasContext>("Data Source=LAPTOP-07NSNMOC;Initial Catalog=TareasDb;user id=sa;password=loc@del@rea;TrustServerCertificate=True");
 builder.Services.AddScoped<ITareaService, TareaService>();
 builder.Services.AddScoped<IHelloWordService, HelloWordService>();
 builder.Services.AddScoped<ICategoriaService, CategoriaService>();
