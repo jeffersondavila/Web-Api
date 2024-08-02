@@ -19,7 +19,10 @@ public class TareaService : ITareaService
 
     public async Task SaveTareas(Tarea tarea)
     {
-        context.Add(tarea);
+        tarea.CodigoTarea = Guid.NewGuid();
+        tarea.FechaCreacion = DateTime.Now;
+
+        await context.AddAsync(tarea);
         await context.SaveChangesAsync();
     }
 

@@ -18,7 +18,8 @@ public class CategoriaService : ICategoriaService
 
     public async Task SaveCategorias(Categoria categoria)
     {
-        context.Add(categoria);
+        // categoria.CodigoCategoria = Guid.NewGuid();
+        await context.AddAsync(categoria);
         await context.SaveChangesAsync();
     }
 
