@@ -1,3 +1,5 @@
+namespace webapi.Services;
+
 public class HelloWordService : IHelloWordService
 {
     public string GetHelloWord()
